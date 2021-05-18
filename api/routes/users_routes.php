@@ -5,7 +5,7 @@
  * @OA\Info(title="move API", version="0.1"),
  * @OA\OpenApi(
  *    @OA\Server(url="http://localhost/move/api/", description="Development Environment" ),
- *    @OA\Server(url="https://se-move-2021.herokuapp.com/", description="Deployed version" )
+ *    @OA\Server(url="https://se-move-2021.herokuapp.com/api/", description="Deployed version" )
  * ),
  * @OA\SecurityScheme(
  *      securityScheme="ApiKeyAuth",
