@@ -43,11 +43,11 @@ Flight::route('PUT /admin/service/update/@id', function($id){
 
 /**
  * @OA\Get(
- *     path="/services", tags={"All users", "Services"},
+ *     path="/ourservices", tags={"All users", "Services"},
  *     @OA\Response(response="200", description="Get services from database")
  * )
  */
-Flight::route('GET /services', function(){
+Flight::route('GET /ourservices', function(){
     Flight::json(Flight::serviceService()->get_all_services());
 })
 
