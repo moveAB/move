@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @OA\Post(path="/admin/diagnosis/new", tags={"Admin", "Diagnosis"}, security={{"ApiKeyAuth": {}}},
+ * @OA\Post(path="/admin/diagnosis/new", tags={"Admin", "Diagnosis"},
  * @OA\RequestBody(
     * description="Main diagnosis info",
     * required=true,
@@ -21,7 +21,7 @@ Flight::route('POST /admin/diagnosis/new', function(){
 });
 
 /**
- * @OA\Put(path="/admin/diagnosis/update/{id}", tags={"Admin", "Diagnosis"}, security={{"ApiKeyAuth": {}}},
+ * @OA\Put(path="/admin/diagnosis/update/{id}", tags={"Admin", "Diagnosis"},
  * @OA\RequestBody(
     * description="Diagnosis info for update",
     * required=true,

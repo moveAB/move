@@ -18,4 +18,9 @@ class AppointmentDao extends BaseDao
     {
         $this->update("appointments", $id, $appointment);
     }
+
+    public function delete($email)
+    {
+        $this->delete($email);
+    }
 }

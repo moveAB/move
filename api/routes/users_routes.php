@@ -19,14 +19,14 @@ use Firebase\JWT\JWT;
 
 /**
  * @OA\Get(
- *     path="/admin/users", tags={"Admin"}, security={{"ApiKeyAuth": {}}},
+ *     path="/patients", tags={"Admin"},
  *     @OA\Response(response="200", description="Get users from database"),
  *     @OA\Parameter(@OA\Schema(type="integer"),in="query",name="offset",default=0, description="Offset query parameter"),
  *     @OA\Parameter(@OA\Schema(type="integer"),in="query",name="limit",default=25, description="Limit query parameter"),
  * )
  */
 
-Flight::route('GET /admin/users',function(){
+Flight::route('GET /patients',function(){
 
     $offset=Flight::request()->query['offset'];
     $limit=Flight::request()->query['limit'];
@@ -35,7 +35,7 @@ Flight::route('GET /admin/users',function(){
 });
 
 /**
- * @OA\Get(path="/users/{id}", tags={"Users", "Admin"}, security={{"ApiKeyAuth": {}}},
+ * @OA\Get(path="/users/{id}", tags={"Users", "Admin"},
  *      @OA\Parameter(type="string",in="path",allowReserved=true,name="id",default="1"),
  *      @OA\Response(response="200", description="Get users from database by id parameter"),
  * )
@@ -70,7 +70,7 @@ Flight::route('POST /register', function(){
 });
 
 /**
- * @OA\Put(path="/users/update/{id}", tags={"Users", "Admin"}, security={{"ApiKeyAuth": {}}},
+ * @OA\Put(path="/users/update/{id}", tags={"Users", "Admin"},
  * @OA\RequestBody(
     * description="User info for update",
     * required=true,
@@ -93,7 +93,7 @@ Flight::route('PUT /users/update/@id', function($id){
 });
 
 /**
- * @OA\Get(path="/confirm/{token}", tags={"Confirmation of the account"}
+ * @OA\Get(path="/confirm/{token}", tags={"Confirmation of the account"},
  *      @OA\Parameter(@OA\Schema(type="string"),in="path",allowReserved=true,name="token",default=""),
  *      @OA\Response(response="200", description="Activate profile"),
  * )
@@ -122,7 +122,7 @@ Flight::route('POST /login', function(){
 });
   
   /**
-   * @OA\Post(path="/forgot", tags={"Forgot password"}, description="Send recovery URL to users email address", security={{"ApiKeyAuth": {}}},
+   * @OA\Post(path="/forgot", tags={"Forgot password"}, description="Send recovery URL to users email address",
    *   @OA\RequestBody(description="Basic user info", required=true,
    *       @OA\MediaType(mediaType="application/json",
    *    			@OA\Schema(
@@ -140,7 +140,7 @@ Flight::route('POST /login', function(){
   });
 
 /**
- * @OA\Post(path="/reset", tags={"Reset password"}, description="Reset users password using recovery token", security={{"ApiKeyAuth": {}}},
+ * @OA\Post(path="/reset", tags={"Reset password"}, description="Reset users password using recovery token",
  *   @OA\RequestBody(description="Basic user info", required=true,
  *       @OA\MediaType(mediaType="application/json",
  *    			@OA\Schema(
@@ -155,3 +155,23 @@ Flight::route('POST /login', function(){
 Flight::route('POST /reset', function(){
     Flight::json(Flight::userService()->reset(Flight::request()->data->getData()));
   });
+
+
+
+  /**
+ * @OA\Post(path="/reset", tags={"Delete"}, description="Delete",
+ *   @OA\RequestBody(description="Delete user", required=true,
+ *       @OA\MediaType(mediaType="application/json",
+ *    			@OA\Schema(
+ *    				 @OA\Property(property="email", required="true", type="string", example="mail@mail.com",	description="Email" )
+ *          )
+ *       )
+ *     ),
+ *  @OA\Response(response="200", description="Delete user")
+ * )
+ */
+Flight::route('POST /delete', function(){
+   Flight::userService()->deleteUser(Flight::request()->data->getData()['email']);
+  });
+
+

@@ -35,4 +35,9 @@ class UserDao extends BaseDao
         $this->update($table, $id, $user);
     }
 
+    public function deleteUser($email)
+    {
+        $this->delete($email);
+    }
+
 }

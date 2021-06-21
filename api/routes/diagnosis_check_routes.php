@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @OA\Get(path="/users/diagnosis/examinations/{id}", tags={"Users", "Admin", "Diagnosis"}, security={{"ApiKeyAuth": {}}},
+ * @OA\Get(path="/users/diagnosis/examinations/{id}", tags={"Users", "Admin", "Diagnosis"},
  *      @OA\Parameter(@OA\Schema(type="string"),in="path",allowReserved=true,name="id",default="1"),
  *      @OA\Response(response="200", description="Get diagnosis from database by examination id parameter"),
  * )
@@ -21,7 +21,7 @@ Flight::route('GET /users/diagnosis/@id', function($id){
 });
 
 /**
- * @OA\Post(path="/admin/diagnosis-check", tags={"Admin", "Diagnosis"}, security={{"ApiKeyAuth": {}}},
+ * @OA\Post(path="/admin/diagnosis-check", tags={"Admin", "Diagnosis"},
  * @OA\RequestBody(
     * description="Many to many diagnosis table",
     * required=true,

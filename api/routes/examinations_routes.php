@@ -2,7 +2,7 @@
 
 /**
  * @OA\Get(
- *     path="/admin/examinations", tags={"Examinations", "Admin"}, security={{"ApiKeyAuth": {}}},
+ *     path="/admin/examinations", tags={"Examinations", "Admin"},
  *     @OA\Response(response="200", description="Get examinations from database")
  * )
  */

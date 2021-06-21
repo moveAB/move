@@ -31,6 +31,14 @@ class BaseDao{
         return reset($results);
     }
 
+    public function delete($email)
+    {
+        $sql="DELETE FROM users WHERE email = :email";
+        $stmt=$this->connection->prepare($sql);
+        $stmt->bindValue(':email', $email);
+        $stmt->execute();
+    }
+
     public function update($table, $id, $entity, $id_column = "id")
     {
         $sql="UPDATE {$table} SET ";

@@ -11,9 +11,9 @@
             $this->dao=new GeneralDao();
         }
 
-        public function get_general($entity)
+        public function get_general()
         {
-            return $this->dao->get_general($entity);
+            return $this->dao->get_general();
         }
 
         public function update_generals($entity)

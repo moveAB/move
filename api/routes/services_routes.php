@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @OA\Post(path="/admin/service", tags={"Admin", "Services"}, security={{"ApiKeyAuth": {}}},
+ * @OA\Post(path="/service", tags={"Admin", "Services"},
  * @OA\RequestBody(
     * description="Main service info",
     * required=true,
@@ -14,14 +14,14 @@
  * )
  *  
  */
-Flight::route('POST /admin/service', function(){
+Flight::route('POST /service', function(){
     $data=Flight::request()->data->getData();
     Flight::serviceService()->insert_service($data);
     Flight::json($data);
 });
 
 /**
- * @OA\Put(path="/admin/service/update/{id}", tags={"Admin", "Services"}, security={{"ApiKeyAuth": {}}},
+ * @OA\Put(path="/admin/service/update/{id}", tags={"Admin", "Services"},
  * @OA\RequestBody(
     * description="Service info for update",
     * required=true,
