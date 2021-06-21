@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Bootstrap Simple Login Form</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="assets/css/login.css">
+<link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" type="text/css">
+</head>
+<body style="background: tomato;">
+<div class="login-form">
+     <form>
+        <h2 class="text-center">MOVe | Prijava</h2>
+        <br>     
+        <div class="form-group">
+            <input id="email" name="email" type="text" class="form-control" placeholder="Email" required="required">
+        </div>
+        <div class="form-group">
+            <input id="password" name="password" type="password" class="form-control" placeholder="Password" required="required">
+        </div>
+        <div class="form-group">
+            <button id="login-link" onclick="doLogin()" type="button" class="btn btn-outline-danger btn-block">Log in</button>
+        </div>
+      </form>
+</div>
+<script type="text/javascript">
+
+function doLogin(){
+  var login_info={
+      "email": $("#email").val(),
+      "password": $("#password").val()
+    };
+
+      $("#login-link").prop('disabled',true);
+      $.post("http://localhost/move21/api/login", login_info).done(function( data ) {
+           window.localStorage.setItem('email', data.email);
+           window.localStorage.setItem('mobile', data.phone_number);
+           window.localStorage.setItem('first_name', data.first_name);
+           window.localStorage.setItem('last_name', data.last_name);
+           window.localStorage.setItem('id', data.id);
+           if(data.role == "USER")
+           {
+              window.location="user.html";
+           }
+           else
+           {
+              window.location="admin.html";
+           }
+      }).fail(function( error ) {
+            console.log(error);
+            $("#login-link").prop('disabled',false);
+            toastr.error("Email or password incorrect");
+      });
+}
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+</body>
+</html>   

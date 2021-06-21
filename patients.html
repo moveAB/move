@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MOVe | Profile</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Tempusdominus Bootstrap 4 -->
+  <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- JQVMap -->
+  <link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
+  <!-- summernote -->
+  <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="assets/css/login.css">
+
+</head>
+<bodyclass="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+      </li>
+    </ul>
+
+    <!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+          <i class="fas fa-expand-arrows-alt"></i>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="#" class="brand-link">
+      <span class="brand-text font-weight-light">MOVe</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="info">
+          <a id="fullname" href="admin.html" class="d-block"></a>
+        </div>
+      </div>
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item">
+            <a href="admin.html" class="nav-link">
+              <i class="nav-icon fas fa-user-alt"></i>
+              <p>
+                Profile
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="patients.html" class="nav-link">
+              <i class="nav-icon fab fa-accessible-icon"></i>
+              <p>
+                Patients
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a onclick="logOut()" href="#" class="nav-link">
+              <i class="nav-icon fas fa-sign-out-alt"></i>
+              <p>
+                Log out
+              </p>
+            </a>
+          </li>
+          </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-12 text-center justify-content-center">
+            <h1 class="m-0">Upravljanje računima pacijenata</h1>
+              <div class="row">
+                <div class="col-6 col-md-12">
+                  <div class="login-form">
+                    <form>
+                       <h2 class="text-center">MOVe | Novi pacijent</h2>
+                       <br>   
+                       <div class="form-group">
+                        <input id="first_name" name="name" type="text" class="form-control" placeholder="Ime:" required="required">
+                    </div>
+                    <div class="form-group">
+                      <input id="last_name" name="surname" type="text" class="form-control" placeholder="Prezime:" required="required">
+                  </div>  
+                       <div class="form-group">
+                           <input id="email" name="email" type="text" class="form-control" placeholder="Email:" required="required">
+                       </div>
+                       <div class="form-group">
+                           <input id="password" name="password" type="password" class="form-control" placeholder="Lozinka:" required="required">
+                       </div>
+                       <div class="form-group">
+                        <input id="phone" name="password" type="text" class="form-control" placeholder="Broj mobitela:" required="required">
+                    </div>
+                       <div class="form-group">
+                           <button id="login-link" onclick="doRegister()" type="button" class="btn btn-outline-danger btn-block">Dodaj korisnika</button>
+                       </div>
+                     </form>
+               </div>
+               <div class="col-6 col-md-12">
+                <div class="login-form">
+                  <form>
+                     <h2 class="text-center">MOVe | Izbriši pacijenta</h2>
+                     <br>   
+                     
+                     <div class="form-group">
+                      <input id="deleteemail" name="password" type="text" class="form-control" placeholder="Email:" required="required">
+                  </div>
+                     <div class="form-group">
+                         <button id="delete-link" onclick="doClear()" type="button" class="btn btn-outline-danger btn-block">Izbriši pacijenta</button>
+                     </div>
+                   </form>
+             </div>
+               </div>
+                </div>
+              </div>
+          </div>
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+  </div>
+  <!-- /.content-wrapper -->
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script src="plugins/jquery/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script>
+<!-- Bootstrap 4 -->
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- ChartJS -->
+<script src="plugins/chart.js/Chart.min.js"></script>
+<!-- Sparkline -->
+<script src="plugins/sparklines/sparkline.js"></script>
+<!-- JQVMap -->
+<script src="plugins/jqvmap/jquery.vmap.min.js"></script>
+<script src="plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+<!-- jQuery Knob Chart -->
+<script src="plugins/jquery-knob/jquery.knob.min.js"></script>
+<!-- daterangepicker -->
+<script src="plugins/moment/moment.min.js"></script>
+<script src="plugins/daterangepicker/daterangepicker.js"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<!-- Summernote -->
+<script src="plugins/summernote/summernote-bs4.min.js"></script>
+<!-- overlayScrollbars -->
+<script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<!-- AdminLTE App -->
+<script src="dist/js/adminlte.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="dist/js/demo.js"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="dist/js/pages/dashboard.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script type="text/javascript">
+
+    function doRegister()
+    {
+      var register_info={
+      "email": $("#email").val(),
+      "password": $("#password").val(),
+      "first_name": $("#first_name").val(),
+      "last_name": $("#last_name").val(),
+      "phone_number": $("#phone").val()
+    };
+
+      $("#login-link").prop('disabled',true);
+      $.post("http://localhost/move21/api/register", register_info).done(function( data ) {
+            toastr.success("Novi pacijent je uspješno registrovan!");
+      }).fail(function( error ) {
+            $("#login-link").prop('disabled',false);
+            toastr.error("Greška! Provjerite ispravnost unesenih polja, pa pokušajte ponovno!");
+      });
+    }
+
+    function doClear()
+    {
+      var delete_info={
+      "email": $("#deleteemail").val()
+    };
+
+      $("#delete-link").prop('disabled',true);
+      $.post("http://localhost/move21/api/delete", delete_info).done(function( data ) {
+            toastr.success("Pacijent je uspješno izbrisan!");
+      }).fail(function( error ) {
+            $("#delete-link").prop('disabled',false);
+            toastr.error("Greška! Provjerite ispravnost unesenog polja, pa pokušajte ponovno!");
+      });
+    }
+
+    function getProfileData()
+    {
+        var first_name = window.localStorage.getItem('first_name');
+        var last_name = window.localStorage.getItem('last_name');
+        document.getElementById('fullname').innerHTML = window.localStorage.getItem('first_name')+' '+window.localStorage.getItem('last_name');
+        
+        
+    }
+
+    function logOut()
+    {
+        window.localStorage.clear();
+        window.location="index.html";
+    }
+  
+
+</script>
+</body>
+</html>
