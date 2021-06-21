@@ -1,4 +1,5 @@
 <?php
+header('Access-Control-Allow-Origin: *');
 
 #Import FlightPHP modules
 require dirname(__FILE__).'/../vendor/autoload.php';

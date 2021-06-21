@@ -52,3 +52,4 @@ Flight::route('PUT /admin/appointments/update/@id', function($id){
     Flight::appointmentService()->update_appointment($id, $data);
     Flight::json($data);
 });
+
